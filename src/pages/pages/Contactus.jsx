@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Box, Grid, Typography, TextField, Checkbox, Button } from '@mui/material';
+import { Box, Grid, Typography, TextField, Checkbox, Button, Container } from '@mui/material';
 
 const variant = {
   initial: { opacity: 0, y: 100 },
@@ -13,19 +13,21 @@ const variant = {
 
 function Contactus({ isDesktop }) {
   return (
+<Container  id="contactUs" className={`${isDesktop ? "h-[650px]" : "h-[850px]"} overflow-hidden`}>
+
     <Box className={`lg:${isDesktop ? 'w-3/4' : 'w-full' } `}>
       <motion.div variants={variant} initial="initial" whileInView="animate">
         <Box
-        id="contactUs"
-          className="bg-gray1-100 py-16 px-4 text-center font-poppins"
+       
+          className="bg-gray1-100 py-16 px-4 mt-3 text-center font-poppins"
           sx={{
-            pt: { xs: 4, sm: 6, md: 8 },
-            pb: { xs: 6, sm: 8, md: 12 },
+            pt: { xs: 1, sm: 2, md: 3 },
+            pb: { xs: 2, sm: 4, md: 8 },
             maxWidth: '100%',
             mx: 'auto',
           }}
         >
-          <Typography variant="h2" component="h2" className="font-bold mb-2">
+          <Typography variant="h3" component="h3" className="font-bold  mb-2">
             Contact Us
           </Typography>
           <Typography variant="h6" className="font-semibold mb-2">
@@ -58,7 +60,9 @@ function Contactus({ isDesktop }) {
                       placeholder="Last name"
                     />
                   </Grid>
-                  <Grid item xs={12}>
+                  </Grid>
+                  <Grid container spacing={2}>
+                  <Grid item xs={6}>
                     <TextField
                       fullWidth
                       style={{background:"white", borderRadius:"10px"}}
@@ -68,7 +72,7 @@ function Contactus({ isDesktop }) {
                       placeholder="you@company.com"
                     />
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid item xs={6}>
                     <TextField
                       fullWidth
                       style={{background:"white", borderRadius:"10px"}}
@@ -77,6 +81,7 @@ function Contactus({ isDesktop }) {
                       required
                       placeholder="Mobile No. (Office)"
                     />
+                  </Grid>
                   </Grid>
                   <Grid item xs={12}>
                     <TextField
@@ -89,15 +94,15 @@ function Contactus({ isDesktop }) {
                       required
                     />
                   </Grid>
-                  <Grid item xs={12} className="flex items-center">
+                  {/* <Grid item xs={12} className="flex items-center">
                     <Checkbox 
                      required />
                     <Typography variant="body2" className="ml-2">
                       I agree to the{' '}
                       <span className="text-blue-500 underline">privacy policy</span>.
                     </Typography>
-                  </Grid>
-                  <Grid item xs={12}>
+                  </Grid> */}
+                  <Grid className='mt-4' item xs={12}>
                     <Button
                       variant="contained"
                       fullWidth
@@ -107,13 +112,15 @@ function Contactus({ isDesktop }) {
                       Send Message
                     </Button>
                   </Grid>
-                </Grid>
+              
               </Box>
             </Grid>
           </Grid>
         </Box>
       </motion.div>
     </Box>
+
+    </Container>
   );
 }
 

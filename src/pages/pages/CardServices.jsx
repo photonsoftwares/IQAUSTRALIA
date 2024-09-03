@@ -1,65 +1,63 @@
-import { useCallback } from "react";
-import PropTypes from "prop-types";
+import React, { useCallback } from 'react';
+import PropTypes from 'prop-types';
+import { Card, CardContent, CardMedia, Typography, IconButton } from '@mui/material';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const ServicesCardsColumns = ({
-  className = "",
+  className = '',
   group1000015039,
   iTStrategyAndArchitecture,
   onServicesCardsButtonsClick,
   isDesktop
-
 }) => {
-  const onServicesCardsButtonsClick1 = useCallback(() => {
-    const anchor = document.querySelector(
-      "[data-scroll-to='servicesDescriptionRows']"
-    );
-    if (anchor) {
-      anchor.scrollIntoView({ block: "start", behavior: "smooth" });
+  const handleClick = useCallback(() => {
+    if (onServicesCardsButtonsClick) {
+      onServicesCardsButtonsClick();
     }
-  }, []);
+  }, [onServicesCardsButtonsClick]);
 
   return (
-    <div
-      className={`border-white border-[0.4px] border-solid flex flex-row items-center justify-start py-2 pl-[13px] pr-3 text-left text-4xs-6 text-white font-poppins ${className}`}
+    <div className='flex justify-center mb-2'>
+    <Card
+      className={`border border-solid p-2 border-white bg-black text-white ${className}`}
+      sx={{ width: isDesktop ? 350 : '80%', height: 240 }}
     >
-      <div className="flex-1 flex flex-col items-start justify-start gap-[18px]">
-        <div className="self-stretch flex flex-col items-start justify-start gap-1.5">
-          <img
-            className={`${isDesktop ? "w-[159.2px]":"w-100"} h-[189.2px] relative object-cover`}
-            loading="lazy"
-            alt=""
-            src={group1000015039}
-          />
-          <div className="relative font-semibold">
-            {iTStrategyAndArchitecture}
-          </div>
-        </div>
-        <div
-          className="w-[36.8px] flex flex-row items-center justify-start gap-[9px] cursor-pointer text-center text-darkslategray"
-          onClick={onServicesCardsButtonsClick}
+      <CardMedia
+        component="img"
+        image={group1000015039}
+        alt={iTStrategyAndArchitecture}
+        sx={{
+          height: 150,
+          objectFit: 'cover',
+          width: '100%'
+        }}
+      />
+      <CardContent sx={{ padding: 2 }}>
+        <Typography variant="body2" component="div" fontWeight="bold">
+          {iTStrategyAndArchitecture}
+        </Typography>
+        <IconButton
+          onClick={handleClick}
+          color="inherit"
+          sx={{ display: 'flex', alignItems: 'center', padding: 0, marginTop: 2 }}
         >
-          <div className="flex-1 relative font-semibold inline-block min-w-[33px]">
+          <Typography variant="body2" className='text-blue-700 fw-bold' component="div" sx={{ marginRight: 1 }}>
             More
-          </div>
-          <img
-            className="h-[6.5px] w-[4.8px] relative object-contain"
-            loading="lazy"
-            alt=""
-            src="/vector.svg"
-          />
-        </div>
-      </div>
+          </Typography>
+          <ArrowForwardIcon className='text-blue-700' fontSize="small" />
+        </IconButton>
+      </CardContent>
+    </Card>
     </div>
   );
 };
 
 ServicesCardsColumns.propTypes = {
   className: PropTypes.string,
-  group1000015039: PropTypes.string,
-  iTStrategyAndArchitecture: PropTypes.string,
-
-  /** Action props */
+  group1000015039: PropTypes.string.isRequired,
+  iTStrategyAndArchitecture: PropTypes.string.isRequired,
   onServicesCardsButtonsClick: PropTypes.func,
+  isDesktop: PropTypes.bool
 };
 
 export default ServicesCardsColumns;

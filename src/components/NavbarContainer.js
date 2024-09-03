@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-import { Link } from 'react-scroll';
+import { Link, useNavigate } from 'react-router-dom';
 
 function NavbarContainer() {
   const [expanded, setExpanded] = useState(false);
@@ -10,6 +9,7 @@ function NavbarContainer() {
   const handleLinkClick = () => {
     setExpanded(false);
   };
+  const navigate = useNavigate(); // Create a navigate function
 
   return (
     <Navbar
@@ -29,6 +29,7 @@ function NavbarContainer() {
             src="/logo.png"
             width="50"
             height="50"
+            onClick={()=>navigate("/")}
           />
           {/* <b className="text-white">Innovationquotient</b> */}
         </Navbar.Brand>
@@ -36,36 +37,28 @@ function NavbarContainer() {
         <Navbar.Collapse id="navbar-nav">
           <Nav className="ml-auto mx-5">
             <Link
-              to="services"
-              spy={true}
-              smooth={true}
+              to="/services"
               className="fw-bold nav-link text-white"
               onClick={handleLinkClick}
             >
               Services
             </Link>
             <Link
-              to="specialisations"
-              spy={true}
-              smooth={true}
+              to="/specialisations"
               className="fw-bold nav-link text-white"
               onClick={handleLinkClick}
             >
               Specialisations
             </Link>
             <Link
-              to="whyIQ"
-              spy={true}
-              smooth={true}
+              to="/whyIQ"
               className="fw-bold nav-link text-white"
               onClick={handleLinkClick}
             >
               WhyIQ
             </Link>
             <Link
-              to="contactUs"
-              spy={true}
-              smooth={true}
+              to="/contactUs"
               className="fw-bold nav-link text-white"
               onClick={handleLinkClick}
             >

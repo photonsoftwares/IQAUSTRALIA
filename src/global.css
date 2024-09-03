@@ -8,6 +8,12 @@
 @tailwind utilities;
 body {
   @apply leading-[normal] m-0;
+  background: black,
+  
+}
+:root {
+  
+  background-color: black; /* Set the background color of the root element */
 }
 *,
 ::before,
@@ -20,4 +26,21 @@ body {
 
 .bg-dimgray-100:hover {
   background-color: #571818; /* Change this to the color you want on hover */
+}
+
+
+/* For traditional CSS */
+.active-link {
+  position: relative;
+}
+
+.active-link::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background: white;
+  position: absolute;
+  bottom: -4px; /* Adjust as needed */
+  left: 0;
+  right: 0;
 }
